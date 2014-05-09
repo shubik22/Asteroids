@@ -107,19 +107,21 @@
     var game = this;
     key("left", function(event) {
       event.preventDefault();
-      game.ship.rotate(Math.PI / 30)
+      game.ship.rotate(Math.PI / 20);
     });
     key("right", function(event) {
       event.preventDefault();
-      game.ship.rotate(-Math.PI / 30)
+      game.ship.rotate(-Math.PI / 20);
     });
     key("up", function(event) {
       event.preventDefault();
-      game.ship.accelerate(1)
+      game.ship.accelerate(1);
+      game.ship.accelerating = true;
     });
     key("down", function(event) {
       event.preventDefault();
-      game.ship.accelerate(-1)
+      game.ship.accelerate(-1);
+      game.ship.accelerating = false;
     });
     if (pacifist) {
       key("space", function(event) {
@@ -128,7 +130,7 @@
     } else {
       key("space", function(event) {
         event.preventDefault();
-        if (game.ship.fireBullet()) game.bullets.push(game.ship.fireBullet())
+        if (game.ship.fireBullet()) game.bullets.push(game.ship.fireBullet());
       });
     }
   }

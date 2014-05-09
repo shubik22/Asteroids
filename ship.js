@@ -5,7 +5,6 @@
     this.pos = [Asteroids.Game.DIM_X / 2, Asteroids.Game.DIM_X / 2];
     this.angle = Math.PI;
     this.radius = Ship.RADIUS;
-    this.color = Ship.COLOR;
     this.speed = 0;
   };
 
@@ -22,12 +21,24 @@
     var dBase2 = [this.radius * Math.sin(baseAngle2),
                   this.radius * Math.cos(baseAngle2)];
 
-    ctx.fillStyle = this.color;
+    var topPos = [this.pos[0] + dTop[0], this.pos[1] + dTop[1]];
+    var base1Pos = [this.pos[0] + dBase1[0], this.pos[1] + dBase1[1]];
+    var base2Pos = [this.pos[0] + dBase2[0], this.pos[1] + dBase2[1]];
 
+    if (this.accelerating) {
+      ctx.fillStyle = ((Math.random() > 0.2) ? "orange" : "red");
+      ctx.beginPath();
+      ctx.moveTo(base1Pos[0], base1Pos[1]);
+      ctx.lineTo(base2Pos[0],base2Pos[1]);
+      ctx.lineTo(this.pos[0] - dTop[0], this.pos[1] - dTop[1]);
+      ctx.fill();
+    }
+
+    ctx.fillStyle = Ship.COLOR;
     ctx.beginPath();
-    ctx.moveTo(this.pos[0] + dTop[0], this.pos[1] + dTop[1]);
-    ctx.lineTo(this.pos[0] + dBase1[0], this.pos[1] + dBase1[1]);
-    ctx.lineTo(this.pos[0] + dBase2[0], this.pos[1] + dBase2[1]);
+    ctx.moveTo(topPos[0], topPos[1]);
+    ctx.lineTo(base1Pos[0], base1Pos[1]);
+    ctx.lineTo(base2Pos[0],base2Pos[1]);
     ctx.fill();
   };
 
