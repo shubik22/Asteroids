@@ -15,7 +15,11 @@
 
   Game.prototype.addAsteroids = function(numAsteroids) {
     for(var i = 0; i < numAsteroids; i++) {
-      this.asteroids.push(Asteroids.Asteroid.randomAsteroid(Game.DIM_X, Game.DIM_Y));
+      var newAsteroid = Asteroids.Asteroid.randomAsteroid(Game.DIM_X, Game.DIM_Y);
+      var overlap = this.asteroids.some(function(asteroid) {
+        return newAsteroid.isCollidedWith(asteroid)
+      })
+      if (!overlap) this.asteroids.push(newAsteroid);
     };
   };
 
@@ -59,8 +63,8 @@
                       return asteroid.isCollidedWith(game.ship);
                     });
     if (collision) {
-      window.alert("Game ovah.");
       game.stop();
+      game.restart();
     };
   };
 
@@ -72,7 +76,7 @@
       if (!isNaN(hitAsteroidIndex)) {
         game.removeAsteroid(hitAsteroidIndex);
         game.removeBullet(i);
-      };
+      }
     };
   };
 
@@ -97,6 +101,16 @@
   Game.prototype.stop = function() {
     var game = this;
     window.clearInterval(game.intervalID)
+  };
+
+  Game.prototype.restart = function() {
+    var game = this;
+    game.asteroids = [];
+    game.bullets = [];
+    this.ship = new Asteroids.Ship();
+    game.addAsteroids(Game.NUM_ASTEROIDS);
+    game.draw();
+    game.intervalID = window.setInterval(game.step.bind(game), Game.FPS);
   };
 
   Game.prototype.start = function() {

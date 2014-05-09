@@ -1,0 +1,84 @@
+html, body, h1, h2, div, canvas, ul, strong {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  font-family: sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+.hidden {
+  display: none;
+}
+
+canvas {
+  background: url("hubble.jpg");
+  background-size: cover;
+  display: block;
+  margin: 20px auto;
+  border: 3px solid gray;
+}
+
+body {
+  background: black;
+}
+
+h1 {
+  color: white;
+  font-size: 42px;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+strong {
+  font-weight: bold;
+}
+
+.new-game {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  margin-left: -70px;
+  margin-top: -180px;
+
+  width: 120px;
+  height: 22px;
+  
+  border: 2px solid grey;
+  text-align: center;
+  font-size: 20px;
+  background: #E0080D;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.new-game:hover {
+  background: #DE3527;
+}
+
+.instructions {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+  margin-left: -100px;
+  margin-top: -100px;
+
+  background: white;
+  border: 2px solid grey;
+  width: 180px;
+  margin-bottom: 40px;
+  padding: 10px;
+  text-align: center;
+}
+
+.instructions > h2 {
+  font-size: 20px;
+  padding-bottom: 5px;
+}

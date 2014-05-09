@@ -3,7 +3,8 @@
 <html>
   <head>
     <title>Asteroids!</title>
-    <link rel="shortcut icon" href="/asteroid.jpeg">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="shortcut icon" href="asteroid-icon.png">
     <script src="keymaster.js"></script>
     <script src="inheritance.js"></script>
     <script src="moving_object.js"></script>
@@ -12,75 +13,38 @@
     <script src="bullet.js"></script>
     <script src="game.js"></script>
     <script src="jquery-2.1.1.min.js"></script>
-
-    <style>
-
-    html, body, h1, div, canvas {
-      margin: 0;
-      border: 0;
-      padding: 0;
-      font: inherit;
-      font-family: sans-serif;
-    }
-
-    .hidden {
-      display: none;
-    }
-
-    canvas {
-      background: url("hubble.jpg");
-      background-size: cover;
-      display: block;
-      margin: 20px auto;
-      border: 3px solid gray;
-    }
-
-    body {
-      background: black;
-    }
-    
-    h1 {
-      color: white;
-      font-size: 42px;
-      text-align: center;
-      margin-top: 40px;
-    }
-
-    .start-game {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-
-      margin-left: -100px;
-      margin-top: -100px;
-
-      width: 160px;
-      height: 30px;
-      
-      border: 2px solid blue;
-      text-align: center;
-      font-size: 25px;
-      background: red;
-      color: blue;
-      padding: 10px;
-      cursor: pointer;
-      z-index: 100;
-    }
-
-    </style>
-
   </head>
 
-  <body>
-    
+  <body>  
     <h1>
       Asteroids!
     </h1>
     
     <canvas height="600" width="600"></canvas>
     
-    <div class="start-game">
-      Start Game
+    <div class="new-game">
+      New Game
+    </div>
+    
+    <div class="instructions">
+      <h2>How to Play</h2>
+      <ul>
+        <li>
+          <strong>&#8592;</strong>: Rotate left
+        </li>
+        <li>
+          <strong>&#8594;</strong>: Rotate right
+        </li>
+        <li>
+          <strong>&#8592;</strong>: Accelerate
+        </li>
+        <li>
+          <strong>&#8595;</strong>: Decelerate
+        </li>
+        <li>
+          <strong>Spacebar</strong>: Shoot bullet
+        </li>
+      </ul>
     </div>
 
      <script>
@@ -88,8 +52,9 @@
         var ctx = canvas.getContext("2d");
         var game = new Asteroids.Game(ctx);
         
-        $(".start-game").on("click", function() {
-          $(".start-game").addClass("hidden");
+        $(".new-game").on("click", function() {
+          $(".new-game").addClass("hidden");
+          $(".instructions").addClass("hidden");
           game.start();
         })
     </script>

@@ -21,6 +21,19 @@
     };
   };
 
+  Bullet.prototype.move = function() {
+    this.pos[0] += this.vel[0];
+    this.pos[1] += this.vel[1];
+  
+    // if (this.pos[0] > Asteroids.Game.DIM_X) || (this.pos[0] < 0) {
+    //   Asteroids.Game.removeBullet(this);
+    // }
+    // 
+    // if (this.pos[1] > Asteroids.Game.DIM_Y) || (this.pos[1] < 0) {
+    //   Asteroids.Game.removeBullet(this);
+    // }
+  };
+
   Bullet.velocity = function(vel) {
     vel[0] *= Bullet.SPEED;
     vel[1] *= Bullet.SPEED;
