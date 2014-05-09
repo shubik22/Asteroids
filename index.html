@@ -19,44 +19,70 @@
     <h1>
       Asteroids!
     </h1>
-    
+        
     <canvas height="600" width="600"></canvas>
     
-    <div class="new-game">
+    <div class="new-game normal">
       New Game
+    </div>
+    
+    <div class="new-game pacifist">
+      New Game
+      <div class="subhead">
+        (Pacifist Mode)
+      </div>
     </div>
     
     <div class="instructions">
       <h2>How to Play</h2>
-      <ul>
-        <li>
-          <strong>&#8592;</strong>: Rotate left
-        </li>
-        <li>
-          <strong>&#8594;</strong>: Rotate right
-        </li>
-        <li>
-          <strong>&#8592;</strong>: Accelerate
-        </li>
-        <li>
-          <strong>&#8595;</strong>: Decelerate
-        </li>
-        <li>
-          <strong>Spacebar</strong>: Shoot bullet
-        </li>
-      </ul>
+      <table>
+        <tr>
+          <td>
+            <strong>a</strong>: Rotate left
+          </td>
+          <td>
+            <strong>d</strong>: Rotate right
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>w</strong>: Accelerate
+          </td>
+          <td>
+            <strong>s</strong>: Decelerate
+          </td>
+        </tr>
+      </table>
+      <strong>Spacebar</strong>: Shoot bullet
     </div>
+
+    <footer>
+      <h3>
+        A Version of the Classic Game
+      </h3>
+      <h3>
+        created by <a href="https://www.linkedin.com/profile/view?id=52435518">Sam Sweeney</a>
+      </h3>
+      <h3>
+       (View source <a href="https://github.com/shubik22/asteroids">here</a>)
+      </h3>
+    </footer>
 
      <script>
         var canvas = document.getElementsByTagName("canvas")[0];
         var ctx = canvas.getContext("2d");
         var game = new Asteroids.Game(ctx);
         
-        $(".new-game").on("click", function() {
+        $(".new-game.normal").on("click", function() {
           $(".new-game").addClass("hidden");
-          $(".instructions").addClass("hidden");
-          game.start();
+          game.start(false);
         })
+        
+        $(".new-game.pacifist").on("click", function() {
+          $(".new-game").addClass("hidden");
+          game.start(true);
+        })
+        
     </script>
   </body>
 </html>
