@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Asteroids!</title>
+    <link rel="shortcut icon" href="/asteroid.jpeg">
+    <script src="keymaster.js"></script>
+    <script src="inheritance.js"></script>
+    <script src="moving_object.js"></script>
+    <script src="asteroid.js"></script>
+    <script src="ship.js"></script>
+    <script src="bullet.js"></script>
+    <script src="game.js"></script>
+    <script src="jquery-2.1.1.min.js"></script>
+
+    <style>
+
+    html, body, h1, div, canvas {
+      margin: 0;
+      border: 0;
+      padding: 0;
+      font: inherit;
+      font-family: sans-serif;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    canvas {
+      background: url("hubble.jpg");
+      background-size: cover;
+      display: block;
+      margin: 20px auto;
+      border: 3px solid gray;
+    }
+
+    body {
+      background: black;
+    }
+    
+    h1 {
+      color: white;
+      font-size: 42px;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    .start-game {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+
+      margin-left: -100px;
+      margin-top: -100px;
+
+      width: 160px;
+      height: 30px;
+      
+      border: 2px solid blue;
+      text-align: center;
+      font-size: 25px;
+      background: red;
+      color: blue;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 100;
+    }
+
+    </style>
+
+  </head>
+
+  <body>
+    
+    <h1>
+      Asteroids!
+    </h1>
+    
+    <canvas height="600" width="600"></canvas>
+    
+    <div class="start-game">
+      Start Game
+    </div>
+
+     <script>
+        var canvas = document.getElementsByTagName("canvas")[0];
+        var ctx = canvas.getContext("2d");
+        var game = new Asteroids.Game(ctx);
+        
+        $(".start-game").on("click", function() {
+          $(".start-game").addClass("hidden");
+          game.start();
+        })
+    </script>
+  </body>
+</html>
